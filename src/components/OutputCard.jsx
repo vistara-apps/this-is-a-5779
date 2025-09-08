@@ -18,7 +18,7 @@ const iconMap = {
   'self-critique': Shield
 }
 
-const OutputCard = ({ title, type, data, isPro }) => {
+const OutputCard = ({ title, type, data, isPro, onUpgrade }) => {
   const Icon = iconMap[type] || Target
   const isLocked = isPro === false && (type === 'focus-identification' || type === 'launch-blueprint' || type === 'self-critique')
 
@@ -27,9 +27,17 @@ const OutputCard = ({ title, type, data, isPro }) => {
       <div className="glass-card rounded-lg p-6 relative">
         <div className="absolute inset-0 bg-black/20 rounded-lg flex items-center justify-center backdrop-blur-sm">
           <div className="text-center text-white">
-            <Lock className="h-8 w-8 mx-auto mb-2" />
+            <Crown className="h-8 w-8 mx-auto mb-2 text-yellow-400" />
             <p className="font-medium">Pro Feature</p>
-            <p className="text-sm opacity-80">Upgrade to unlock</p>
+            <p className="text-sm opacity-80 mb-3">Upgrade to unlock</p>
+            {onUpgrade && (
+              <button
+                onClick={onUpgrade}
+                className="px-3 py-1 bg-accent text-white text-xs rounded-md hover:bg-accent/90 transition-colors"
+              >
+                Upgrade Now
+              </button>
+            )}
           </div>
         </div>
         

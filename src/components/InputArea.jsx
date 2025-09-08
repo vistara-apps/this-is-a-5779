@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Sparkles, AlertCircle } from 'lucide-react'
 
-const InputArea = ({ onAnalyze, isLoading, error }) => {
+const InputArea = ({ onAnalyze, isLoading, error, userTier, onUpgrade }) => {
   const [businessConcept, setBusinessConcept] = useState('')
 
   const handleSubmit = (e) => {
@@ -34,9 +34,19 @@ Examples:
         </div>
 
         {error && (
-          <div className="flex items-center space-x-2 text-red-300">
-            <AlertCircle className="h-4 w-4" />
-            <span className="text-sm">{error}</span>
+          <div className="flex items-center justify-between p-3 bg-red-500/20 border border-red-500/30 rounded-lg">
+            <div className="flex items-center space-x-2 text-red-300">
+              <AlertCircle className="h-4 w-4" />
+              <span className="text-sm">{error}</span>
+            </div>
+            {error.includes('limit') && userTier === 'free' && (
+              <button
+                onClick={onUpgrade}
+                className="px-3 py-1 bg-accent text-white text-xs rounded-md hover:bg-accent/90 transition-colors"
+              >
+                Upgrade
+              </button>
+            )}
           </div>
         )}
 

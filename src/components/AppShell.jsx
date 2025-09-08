@@ -2,7 +2,7 @@ import React from 'react'
 import { Crown, Menu, X } from 'lucide-react'
 import { useState } from 'react'
 
-const AppShell = ({ children, userTier, onToggleTier }) => {
+const AppShell = ({ children, userTier, onToggleTier, onUpgrade }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
 
   return (
@@ -24,7 +24,7 @@ const AppShell = ({ children, userTier, onToggleTier }) => {
             </div>
             
             <button
-              onClick={onToggleTier}
+              onClick={userTier === 'pro' ? onToggleTier : onUpgrade}
               className={`px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                 userTier === 'pro'
                   ? 'bg-accent text-white hover:bg-accent/90'
@@ -56,7 +56,7 @@ const AppShell = ({ children, userTier, onToggleTier }) => {
               </div>
               
               <button
-                onClick={onToggleTier}
+                onClick={userTier === 'pro' ? onToggleTier : onUpgrade}
                 className={`w-full px-4 py-2 rounded-lg font-medium transition-all duration-200 ${
                   userTier === 'pro'
                     ? 'bg-accent text-white hover:bg-accent/90'
