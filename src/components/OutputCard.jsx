@@ -2,16 +2,17 @@ import React from 'react'
 import { 
   Target, 
   Lightbulb, 
-  Grid3X3, 
+  LayoutGrid, 
   Focus, 
   Rocket, 
   Shield,
-  Lock
+  Lock,
+  Crown
 } from 'lucide-react'
 
 const iconMap = {
   'problem-framing': Target,
-  'pain-points': Grid3X3,
+  'pain-points': LayoutGrid,
   'mvp-ideas': Lightbulb,
   'focus-identification': Focus,
   'launch-blueprint': Rocket,
